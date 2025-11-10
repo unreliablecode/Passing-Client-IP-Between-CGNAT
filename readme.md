@@ -98,9 +98,9 @@ tailscale status
 Find the IP for your VPS (e.g., 100.x.x.x).
 
 Create a new Apache configuration file to enable mod_remoteip:
-
+```
 sudo nano /etc/apache2/conf-available/remoteip.conf
-
+```
 
 Add the following content. This tells mod_remoteip to look for the X-Forwarded-For header and to trust the proxy providing it (your VPS).
 
