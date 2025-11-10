@@ -105,25 +105,27 @@ sudo nano /etc/apache2/conf-available/remoteip.conf
 Add the following content. This tells mod_remoteip to look for the X-Forwarded-For header and to trust the proxy providing it (your VPS).
 
 # /etc/apache2/conf-available/remoteip.conf
-
+```
 # 1. Tell Apache to use the X-Forwarded-For header
 RemoteIPHeader X-Forwarded-For
 
 # 2. Tell Apache to trust your VPS's Tailscale IP
 #    (Replace 100.x.x.x with your VPS's Tailscale IP)
 RemoteIPTrustedProxy 100.x.x.x
-
+```
 
 Enable the new configuration and the remoteip module:
-
+```
 sudo a2enconf remoteip
+```
+```
 sudo a2enmod remoteip
-
+```
 
 Restart Apache on your Home Server:
-
+```
 sudo systemctl restart apache2
-
+```
 
 Step 3: Configure the Nextcloud Application
 
@@ -132,7 +134,7 @@ Finally, tell the Nextcloud application itself to trust the proxy.
 Edit your Nextcloud config.php file, usually located at /var/www/nextcloud/config/config.php.
 
 Add your VPS's Tailscale IP to the trusted_proxies array.
-
+```
 <?php
 $CONFIG = [
   // ... other config options
@@ -143,7 +145,7 @@ $CONFIG = [
 
   // ... other config options
 ];
-
+```
 
 ✅ Verification
 
