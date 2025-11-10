@@ -62,7 +62,7 @@ On your VPS, edit the Apache virtual host configuration file for your domain (e.
 Inside your <VirtualHost> or <Location> block for the proxy, add the following RequestHeader directives. This takes the actual visitor's IP (%{REMOTE_ADDR}s) and puts it into the X-Forwarded-For header.
 
 # /etc/apache2/sites-available/nextcloud.conf
-
+```
 <VirtualHost *:443>
     ServerName nextcloud.your-domain.com
     
@@ -77,9 +77,9 @@ Inside your <VirtualHost> or <Location> block for the proxy, add the following R
     ProxyPassReverse / http://[HOME_SERVER_TAILSCALE_IP]:80/
     
     # Your SSL Config (Certbot, etc.)
-    # ...
+    #
 </VirtualHost>
-
+```
 
 After saving, restart Apache on the VPS:
 
